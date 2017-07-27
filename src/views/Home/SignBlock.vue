@@ -1,152 +1,182 @@
 <template>
-  <div class="signIn-container">
-    <div class="signIn-Box">
-      <div class="signIn-tip">
-        <div class="mui-switch mui-switch-blue mui-switch-mini  mui-active" >
-          <div class="mui-switch-handle" ></div>
-        </div>
-        <span>已开启签到提醒</span>
+  <div class="signIn-Box animated " :class="{slideOutUp: !signShow, slideInDown: signShow}" :style="{display: signLoaded}">
+    <div class="signIn-tip">
+      <div class="mui-switch mui-switch-blue mui-switch-mini mui-active" @toggle="openTips">
+        <div class="mui-switch-handle" ></div>
       </div>
-      <div class="hasSign">
-        <div>已连续签到3天</div>
-        <div class="sign-count">
-          <strong>3</strong>天
-        </div>
-      </div>
-      <ul  class="sign-week">
-        <li class="active" >
-          <span class="week-ball ">+3</span>
-          <div>第一天</div>
-        </li>
-        <li class="active" >
-          <span class="week-ball ">+4</span>
-          <div>第二天</div>
-        </li>
-        <li class="active" >
-          <span class="week-ball ">+5</span>
-          <div>第三天</div>
-        </li>
-        <li>
-          <span class="week-ball">+5</span>
-          <div>第四天</div>
-        </li>
-        <li>
-          <span class="week-ball">+5</span>
-          <div>第五天</div>
-        </li>
-        <li>
-          <span class="week-ball">+5</span>
-          <div>第六天</div>
-        </li>
-        <li>
-          <span class="week-ball">+5</span>
-          <div>第七天</div>
-        </li>
-      </ul>
-      <div class="slide-up" onclick="slideUpThis()">收起</div>
+      <span>已{{tipsOn}}签到提醒</span>
     </div>
-    <div class="signIn-success">
-      <img src="./img/btn_close_01.png" alt="" class="close">
-      <div class="remind-content">
-        <img src="./img/img_jifen.png" alt="">
-        <div>积分+5</div>
-        <p>明日签到将获得5积分</p>
+    <div class="hasSign">
+      <div>已连续签到{{signDays}}天</div>
+      <div class="sign-count">
+        <strong>{{signDays}}</strong>天
       </div>
     </div>
+    <ul  class="sign-week">
+      <li class="active" >
+        <span class="week-ball ">+3</span>
+        <div>第一天</div>
+      </li>
+      <li class="active" >
+        <span class="week-ball ">+4</span>
+        <div>第二天</div>
+      </li>
+      <li class="active" >
+        <span class="week-ball ">+5</span>
+        <div>第三天</div>
+      </li>
+      <li>
+        <span class="week-ball">+5</span>
+        <div>第四天</div>
+      </li>
+      <li>
+        <span class="week-ball">+5</span>
+        <div>第五天</div>
+      </li>
+      <li>
+        <span class="week-ball">+5</span>
+        <div>第六天</div>
+      </li>
+      <li>
+        <span class="week-ball">+5</span>
+        <div>第七天</div>
+      </li>
+    </ul>
+    <div class="slide-up" @click="slideBox">收起</div>
   </div>
 </template>
 <script type="text/ecmascript-6">
     export default {
-        name: 'SignBlock',
-        data () {
-            return {
-                msg: '数据'
-            }
+      name: 'SignBlock',
+      props: ['signShow', 'signLoaded'],
+      data () {
+        return {
+          msg: '数据',
+          tipsOn: '开启',
+          signDays: 3
         }
+      },
+      computed: {
+      },
+      methods: {
+        openTips () {
+          this.tipsOn = this.tipsOn === '开启' ? '关闭' : '开启'
+        },
+        slideBox () {
+          this.$emit('slideBox')
+        }
+      }
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .sign-block{
-    background: url(../img/img_home_top.png) no-repeat center 100%;
-    background-size: 100% 100%;
-    padding: 0.3rem;
-    padding-top: 0.66rem;
-    position: relative;
-    .score{
-      font-size: 0.24rem;
-      display: inline-block;
-      line-height:1.5em;
-      padding-top: 0.2rem;
-      a{
-        color:#fff;
-        display: block;
+    .signIn-Box{
+      position: fixed;
+      top:0;
+      left:0;
+      right:0;
+      padding-bottom: 0;
+      border-top: 1px solid #eee;
+      z-index: 9;
+      display: none;
+      .signIn-tip{
+        display: flex;
+        padding:0.3rem;
+        background: #fff;
+        span{
+          line-height: 0.6rem;
+          margin-left: 0.2rem;
+          font-size: 0.36rem;
+        }
+      }
+      .hasSign{
+        background: #fff;
+        text-align: center;
         font-size: 0.3rem;
-        i{
+        color: #6c6c6c;
+        padding:0.3rem;
+        padding-top: 0;
+        border-bottom: 1px solid #eee;
+        .sign-count{
+          margin-top: 0.3rem;
+          height:1rem;
+          line-height: 1.25rem;
+          color:#3C6DF8;
+          background-image: url("../../assets/images/date.png");
+          background-repeat: no-repeat;
+          background-position: 47% 50%;
+          background-size: auto 100%;
+          strong{
+            font-size: 0.42rem;
+          }
+        }
+      }
+      .sign-week{
+        background: #fff;
+        overflow: hidden;
+        padding:0.3rem 0.39rem;
+        display: flex;
+        li{
+          flex:1;
           font-size: 0.28rem;
-        }
-        strong{
-          font-size: 0.72rem;
-          margin-bottom: 0.24rem;
-          font-weight: normal;
-        }
-      }
-      p{
-        color:#fff;
-        mark{
-          color: #ed1c24;
-          background: transparent;
-        }
-      }
-    }
-    .nav-block{
-      margin-top: 0.4rem;
-      color: #FF6000 ;
-      font-size:0.34rem;
-      display: flex;
-      justify-content: space-between;
-      .nav-item{
-        a{
-          color: #fff;
-          font-size: 0.34rem;
-          margin-bottom: 0.4rem;
-        }
-        i.mui-icon-arrowright{
-          font-size: 0.34rem;
+          text-align: center;
+          div{
+            color: #E7E7E7;
+          }
+          &.active{
+            .week-ball{
+              background: #3c6df8;
+              border-color: #3c6df8;
+              color: #fff;
+            }
+            div{
+              color: #3c3c3c;
+            }
+          }
+          .week-ball{
+            display: inline-block;
+            width:0.7rem;
+            height:0.7rem;
+            border-radius: 100%;
+            border:2px solid #dedede;
+            margin-bottom: 0.2rem;
+            color: #999999;
+            line-height: 0.7rem;
+            text-align: center;
+          }
         }
       }
-    }
-    .sign-btn{
-      float: right;
-      margin-top: 0.2rem;
-      color: @blue-text;
-      width:1.6rem;
-      //height:0.6rem;
-      line-height:0.6rem;
-      background: #fff;
-      font-size: 0.28rem;
-      text-align: center;
-      border-radius: 0.3rem;
-      position: relative;
-      top:-0.36rem;
-      span{
-        font-size: 0.3rem;
-      }
-      &:before{
-        content: '';
+      .slide-up{
         display: inline-block;
-        height: 25px;
-        border-right: 2px solid #FFF;
-        position: absolute;
-        top: -25px;
-      }
-      &:after{
-        content: '';
-        display: inline-block;
-        height: 25px;
-        border-right: 2px solid #FFF;
-        position: absolute;
-        top: -25px;
+        color: #3c6df8;
+        font-size:0.28rem;
+        float: right;
+        width: 1.6rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        text-align: center;
+        background-color: #FFF;
+        border-radius: 15px;
+        margin-top:0.5rem;
+        position: relative;
+        margin-right: 0.3rem;
+        &:before{
+          content: '';
+          display: inline-block;
+          height: 0.5rem;
+          border-right: 2px solid #FFF;
+          position: absolute;
+          top: -0.5rem;
+          left: 0.5rem;
+        }
+        &:after{
+          content: '';
+          display: inline-block;
+          height: 0.5rem;
+          border-right: 2px solid #FFF;
+          position: absolute;
+          top: -0.5rem;
+          left: 1.08rem;
+        }
       }
     }
-  }
 </style>
