@@ -96,7 +96,6 @@
   import SignBlock from './SignBlock.vue'
   import SignSuccess from './SignSuccess.vue'
   import NavHeader from '@/components/NavHeader.vue'
-  import mui from '@/assets/libs/mui.min.js'
   export default {
     data () {
       return {
@@ -120,7 +119,7 @@
       }
     },
     mounted () {
-      mui('#slider').slider({
+      this.$mui('#slider').slider({
         interval: 4000
       })
     }
