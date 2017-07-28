@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-    <NavHeader></NavHeader>
     <div class="container index-wrapper">
       <div class="sign-block">
         <div class="score">
@@ -11,7 +10,7 @@
           <!--连签 <span>3</span> 天-->
         </div>
         <div class="nav-block">
-          <div class="nav-item"><router-link to="/hello">兑换记录 <i class="mui-icon mui-icon-arrowright"></i></router-link></div>
+          <div class="nav-item"><router-link to="/exchangeRecord">兑换记录 <i class="mui-icon mui-icon-arrowright"></i></router-link></div>
         </div>
       </div>
 
@@ -24,14 +23,14 @@
           <img src="../../assets/images/btn_lottery.png" alt="">
           <h4>周周乐</h4>
         </a>
-        <a href="##" class="game-item">
+        <router-link to="/treasure" class="game-item">
           <img src="../../assets/images/btn_indiana.png" alt="">
           <h4>夺宝</h4>
-        </a>
-        <a href="##" class="game-item">
+        </router-link>
+        <router-link to="/task" class="game-item">
           <img src="../../assets/images/btn_renwu@2x.png" alt="">
           <h4>做任务</h4>
-        </a>
+        </router-link>
       </div>
       <!--轮播-->
       <div id="slider" class="mui-slider">
@@ -75,18 +74,34 @@
         </div>
       </div>
       <div class="score-exchange">
-        <h3><span>积分兑物</span> <a href="./pages/exchange.html">MORE</a></h3>
+        <h3><span>积分兑物</span> <router-link to="/exchange">MORE</router-link></h3>
         <GoodsLists></GoodsLists>
         <div class="exchange-footer" onclick="loadMore()"><a href="javascript:void(0)" class="text-blue">查看更多兑换物品</a></div>
       </div>
 
     </div>
     <!--弹窗背景-->
-    <div class="bg animated" :class="{fadeIn:modal, fadeOut:!modal }" v-show="modal"></div>
+    <div class="bg animated" :class="{fadeIn:modal, fadeOut:!modal }" v-show="modal" ></div>
+    <!--签到提醒弹窗-->
+    <div class="signIn-containerT" v-show="remindModal" >
+      <div class="signIn-remind animated" :class="{slideInDown:remindModal, slideOutUp: !remindModal}" >
+        <div class="remind-box">
+          <div class="header">签到提醒</div>
+          <div class="content">
+            <h5>每一天，我都在这里等你</h5>
+            <p>已连续签到3天</p>
+            <span>今日签到可领取5积分</span>
+          </div>
+          <div class="sign-Btn">立即签到</div>
+          <img src="../../assets/images/btn_close_white.png" alt="" class="close" @click="closeRemindModal" >
+        </div>
+      </div>
+    </div>
     <!--签到下拉弹窗-->
     <SignBlock  :sign-show="sign" @slideBox="slideSign" :sign-loaded="signLoad"></SignBlock>
     <!--签到成功弹窗-->
     <SignSuccess v-if="signSuccess" ></SignSuccess>
+
   </div>
 
 
@@ -102,7 +117,8 @@
         modal: false,
         sign: false,
         signSuccess: false,
-        signLoad: 'none'
+        signLoad: 'none',
+        remindModal: false
       }
     },
     components: {
@@ -116,12 +132,19 @@
         this.signLoad = 'block'
         this.sign = !this.sign
         this.modal = this.sign
+      },
+      closeRemindModal () {
+        this.remindModal = false
       }
     },
     mounted () {
+      var _this = this
       this.$mui('#slider').slider({
         interval: 4000
       })
+      setTimeout(function () {
+        _this.remindModal = true
+      }, 2000)
     }
   }
 </script>
@@ -292,6 +315,84 @@
       &.mui-active{
         background-color:#3C6DF8;
         border-color:#3C6DF8;
+      }
+    }
+  }
+  .signIn-containerT{
+    background: rgba(0,0,0,0.5);
+    width:100%;
+    height:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 9;
+    &:before{
+      content: '';
+      display: block;
+      height:2.5rem;
+      width:0.06rem;
+      background: #fff;
+      border-radius: 0.06rem;
+      position: absolute;
+      left:50%;
+      top:0;
+    }
+    .signIn-remind{
+      background: #fff;
+      width:5rem;
+      height:6rem;
+      border-radius: 4px;
+      text-align: center;
+      margin:0 auto;
+      margin-top: 2.5rem;
+      position: relative;
+      .header{
+        background: #3C6DF8;
+        color:#fff;
+        padding:0.38rem 0 0.24rem 0;
+        text-align: center;
+        font-size: 0.36rem;
+      }
+      .content{
+        padding-top:0.8rem ;
+        color: #333;
+        h5{
+          font-size: 0.32rem;
+          color:#333;
+          font-weight: bold;
+          margin-bottom:0.72rem ;
+        }
+        p{
+          color: #3C6DF8;;
+          font-size: 0.32rem;
+          margin-bottom: 0.12rem;
+        }
+        span{
+          color:#C9C9C9;
+          font-size: 0.28rem;
+        }
+      }
+      .sign-Btn{
+        width:2.4rem;
+        height:0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        background: #3C6DF8;
+        color:#fff;
+        box-shadow: 0 0.1rem 10px 0 #3C6DF8;
+        border-radius:0.5rem;
+        margin:0 auto;
+        margin-top: 0.8rem;
+      }
+      .close{
+        width:0.8rem;
+        height:0.8rem;
+        position: absolute;
+        bottom:-1.2rem;
+        left:50%;
+        margin-left: -0.4rem;
       }
     }
   }

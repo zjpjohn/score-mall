@@ -1,0 +1,100 @@
+@import "reset.css";
+body,html{
+    height:100%;
+    background: #F7F7F7;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    height:0;
+    visibility: hidden;
+    clear: both;
+
+}
+.goods-tag{
+    font-size: .26rem;
+    display: inline-block;
+    color:#fff;
+    padding:.06rem .08rem ;
+    -webkit-border-radius:0.04rem;
+    border-radius:0.04rem;
+}
+.goods-tag.blue{
+    background-color: #0099fd;
+}
+.goods-tag.orange{
+    background-color: #fa9904;
+}
+.text-grey{
+    color: #B9B9B9;
+}
+.text-blue{
+    color: #3C6DF8;
+}
+.text-orange{
+    color: #FF6000;
+}
+.text-red{
+    color: #F46467;
+}
+.badge{
+    padding:0.04rem 0.1rem;
+    font-size: 0.26rem;
+    color: #fff;
+    background: #999999;
+    border-radius: 2px;
+}
+.mui-popover .mui-popover-arrow:after{
+    display: none;
+}
+.mui-backdrop {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.mui-popup-button{
+  font-size: 0.34rem;
+  color: #999999;
+}
+.mui-popup-button.mui-popup-button-bold{
+    font-size: 0.34rem;
+    color: #0076FF;
+    font-weight: normal;
+}
+.mui-popup-title{
+    margin-bottom: 0.4rem;
+}
+.mui-popup-inner{
+    padding:0.4rem;
+}
+.mui-popup-title+.mui-popup-text{
+    font-size: 0.26rem;
+    color: #030303;
+}
+.mui-poppicker .mui-poppicker-body {
+    border-top: 1px solid #DFE4E6;
+}
+.mui-poppicker .mui-poppicker-body .mui-picker {
+    background: #fff;
+    font-size: 0.34rem;
+    color: #3C3C3C;
+}
+.mui-poppicker .mui-poppicker-header {
+    background: #fff;
+    display: flex;
+}
+.mui-poppicker .mui-poppicker-header .mui-poppicker-btn-cancel {
+    flex: 1;
+    font-size: 0.3rem;
+    color: #3C3C3C;
+    position: relative;
+    border: none;
+    border-right: 1px solid #DFE4E6;
+}
+.mui-poppicker .mui-poppicker-header .mui-poppicker-btn-ok {
+    border: none;
+    height: 100%;
+    flex: 1;
+    font-size: 0.3rem;
+    color: #3C6DF8;
+    background: #fff;
+}
+
