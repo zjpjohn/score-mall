@@ -4,11 +4,11 @@
       <div class="goods-imgs">
         <div class="mui-slider">
           <div class="mui-slider-group  ">
-            <div class="mui-slider-item"><a href="#"><img :src="static/img/img_goods.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img :src="static/img/img_indiana_goods.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img :src="static/img/img_indiana.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img :src="static/img/img_goods.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img :src="static/img/img_indiana.png" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="static/img/img_goods.png" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="static/img/img_indiana_goods.png" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="static/img/img_indiana.png" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="static/img/img_goods.png" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="static/img/img_indiana.png" /></a></div>
           </div>
           <div class="slider-count">
             <div class="mui-slider-indicator">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="goods-intro">
-        <img :src="static/img/goods.png" alt="">
+        <img src="static/img/goods.png" alt="">
       </div>
     </div><!--主内容结束-->
 
@@ -64,6 +64,7 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
+  @import "../../assets/scss/index";
   .goods-page{
     min-height:100%;
     padding-bottom: 1rem;

@@ -1,7 +1,7 @@
 <template>
   <ul class="score-goods">
     <li v-for="goods in goodsLists">
-      <router-link to="{goods.goodsUrl}" class="mui-clearfix">
+      <router-link :to="goods.goodsUrl" class="mui-clearfix">
         <img class="img-left" :src="goods.imgUrl" alt="">
         <div class="right-info">
           <h5>{{goods.name}}</h5>
