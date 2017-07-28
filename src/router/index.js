@@ -7,6 +7,7 @@ import Exchange from '@/views/exchange/Exchange'
 import ExchangeRecord from '@/views/exchange/ExchangeRecord'
 import Treasure from '@/views/treasure/treasure'
 import Task from '@/views/task/task'
+import Goods from '@/views/goods/goods'
 
 Vue.use(Router)
 
@@ -29,12 +30,10 @@ export default new Router({
     },
     {
       path: '/exchange',
-      name: 'exchange',
       component: Exchange
     },
     {
       path: '/exchangeRecord',
-      name: 'exchangeRecord',
       component: ExchangeRecord
     },
     {
@@ -46,6 +45,10 @@ export default new Router({
       path: '/task',
       name: 'task',
       component: Task
+    },
+    {
+      path: '/goods',
+      component: Goods
     }
   ]
 })

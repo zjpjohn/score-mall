@@ -1,0 +1,40 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "id": "1",
+      "name": "诺诗兰（NORTHLAND）轻量级空气净化器",
+      "value": "10000积分",
+      "imgUrl": "static/img/img_goods.png",
+      "goodsUrl": "/goods"
+    },
+    {
+      "id": "2",
+      "name": "移动100M流量包",
+      "value": "3000积分",
+      "imgUrl": "static/img/100M.png",
+      "goodsUrl": "/e-goods"
+    },
+    {
+      "id": "2",
+      "name": "优酷影视会员1个月",
+      "value": "10000积分",
+      "imgUrl": "static/img/img_indiana.png",
+      "goodsUrl": "/code-goods"
+    },
+    {
+      "id": "2",
+      "name": "小米洒哇地咔擦地器",
+      "value": "10000积分",
+      "imgUrl": "static/img/img_goods.png",
+      "goodsUrl": "/404"
+    },
+    {
+      "id": "2",
+      "name": "诺诗兰（NORTHLAND）轻量级空气净化器",
+      "value": "10000积分",
+      "imgUrl": "static/img/img_goods.png",
+      "goodsUrl": "/lose-internet"
+    }
+  ]
+}

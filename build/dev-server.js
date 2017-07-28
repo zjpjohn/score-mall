@@ -51,6 +51,8 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(options.filter || context, options))
 })
 
+// mock 数据
+app.use('/mock',express.static('./mock'))
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 
@@ -60,6 +62,7 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
+
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)

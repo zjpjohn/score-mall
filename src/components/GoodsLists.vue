@@ -1,68 +1,18 @@
 <template>
   <ul class="score-goods">
-    <li>
-      <a href="##" class="mui-clearfix">
-        <img class="img-left" src="static/img/img_goods.png" alt="">
+    <li v-for="goods in goodsLists">
+      <router-link to="{goods.goodsUrl}" class="mui-clearfix">
+        <img class="img-left" :src="goods.imgUrl" alt="">
         <div class="right-info">
-          <h5>诺诗兰（NORTHLAND）轻量级空气净化器</h5>
+          <h5>{{goods.name}}</h5>
           <div class="score-value">
-            <mark>1000000积分</mark>
+            <mark>{{goods.value}}</mark>
           </div>
           <button class="getNow">立即抢兑</button>
         </div>
-      </a>
+      </router-link>
     </li>
-    <li>
-      <a href="./pages/shopping/e-goods.html" class="mui-clearfix">
-        <img class="img-left e-img" src="static/img/100M.png" alt="">
-        <div class="right-info">
-          <h5>诺诗兰（NORTHLAND）轻量级空气净化器</h5>
-          <div class="score-value">
-            <mark>1000000积分</mark>
-          </div>
 
-          <button class="getNow">立即抢兑</button>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="./pages/shopping/code-goods.html" class="mui-clearfix">
-        <img class="img-left" src="static/img/img_indiana.png" alt="">
-        <div class="right-info">
-          <h5>诺诗兰（NORTHLAND）轻量级空气净化器</h5>
-          <div class="score-value">
-            <mark>1000000积分</mark>
-          </div>
-
-          <button class="getNow">立即抢兑</button>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="./404.html" class="mui-clearfix">
-        <img class="img-left" src="static/img/img_indiana.png" alt="">
-        <div class="right-info">
-          <h5>诺诗兰（NORTHLAND）轻量级空气净化器</h5>
-          <div class="score-value">
-            <mark>1000000积分</mark>
-          </div>
-
-          <button class="getNow">立即抢兑</button>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="./lose-internet.html" class="mui-clearfix">
-        <img class="img-left" src="static/img/img_goods.png" alt="">
-        <div class="right-info">
-          <h5>诺诗兰（NORTHLAND）轻量级空气净化器</h5>
-          <div class="score-value">
-            <mark>1000000积分</mark>
-          </div>
-          <button class="getNow">立即抢兑</button>
-        </div>
-      </a>
-    </li>
   </ul>
 </template>
 <script type="text/ecmascript-6">
@@ -70,8 +20,21 @@ export default {
   name: 'GoodsLists',
   data () {
     return {
-      msg: '数据'
+      goodsLists: []
     }
+  },
+  created () {
+    var _this = this
+//    请求商品列表
+    this.$http.get('/mock/goods.json')
+      .then(function (response) {
+        var data = response.data.data
+        _this.goodsLists = data
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    console.log(this.$http)
   }
 }
 </script>
