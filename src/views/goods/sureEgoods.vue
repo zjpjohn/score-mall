@@ -4,32 +4,28 @@
       <div class="img-wrapper">
         <img src="static/img/50M.png" alt="">
       </div>
-      <h3><strong>300</strong>积分</h3>
+      <h3><strong>{{value}}</strong>积分</h3>
     </div>
     <div class="order-form">
       <form action="##" class="order">
         <div class="line-item">
           <label >手机号</label>
           <div class="input-group">
-            <input type="text" id="phone" placeholder="请输入兑换流量的手机号" name="tel" class="input-area" oninput="this.value=this.value.replace(/\D/,'')">
+            <input type="text" v-model="tel" placeholder="请输入兑换流量的手机号" name="tel" class="input-area" @input="checkPhone">
           </div>
 
         </div>
         <div class="line-item">
           <label >数量</label>
           <div class="input-group">
-            <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
-              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-              <input id="number" class="mui-input-numbox" type="number" value="1" />
-              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-            </div>
+            <NumBox :num="goodsNum" @changeNum="computedPrice"></NumBox>
           </div>
 
         </div>
         <div class="line-item">
           <label >总价</label>
           <div class="input-group goods-value">
-            <span>500</span>积分
+            <span>{{totalPrice}}</span>积分
           </div>
         </div>
       </form>
@@ -37,14 +33,45 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-    export default {
-      name: 'hello',
-      data () {
-        return {
-          msg: '数据'
+  import NumBox from '@/components/Numbox'
+  export default {
+    name: 'hello',
+    data () {
+      return {
+        value: this.score,
+        goodsNum: 1,
+        tel: ''
+      }
+    },
+    components: {
+      NumBox
+    },
+    props: {
+      score: {
+        type: Number,
+        default: 0
+      }
+    },
+    computed: {
+      totalPrice () {
+        var total = this.value * this.goodsNum
+        this.$emit('totalPrice', total)
+        return total
+      }
+    },
+    methods: {
+      computedPrice (num) {
+        this.goodsNum = num
+      },
+      checkPhone () {
+        this.tel = this.tel.replace(/\D/, '')
+        var reg = /^1(3|4|5|7|8)\d{9}$/
+        if (reg.test(this.tel)) {
+          this.$emit('checkTel', true)
         }
       }
     }
+  }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "../../assets/scss/index";

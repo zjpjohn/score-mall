@@ -39,7 +39,7 @@
     <div class="sticky-footer">
 
       <!--状态二选一-->
-     <router-link class="btn can-get" to="/order/sureorder/sureMatter">立即兑换</router-link>
+     <router-link class="btn can-get" to="/order/sureorder? type=matter">立即兑换</router-link>
       <!--<div class="not-get">-->
       <!--<router-link href="##" class="going-task">做任务，赚取积分 <i class="mui-icon mui-icon-arrowright"></i></router-link>-->
       <!--所需兑换积分不够-->

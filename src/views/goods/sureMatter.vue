@@ -30,7 +30,7 @@
         </div>
         <div class="line-item">
           <p>数量：<span>{{goodsNum}}</span></p>
-          <NumBox :num="goodsNum"></NumBox>
+          <NumBox :num="goodsNum" @changeNum = 'computeTotal'></NumBox>
         </div>
         <div class="line-item">
           <p>总价：<span class="text-blue">{{totalPrice}}积分</span></p>
@@ -49,8 +49,14 @@
     data () {
       return {
         userInfo: '',
-        goodsValue: 2000,
+        goodsValue: this.score,
         goodsNum: 1
+      }
+    },
+    props: {
+      score: {
+        type: Number,
+        default: 0
       }
     },
     computed: {
@@ -66,8 +72,8 @@
       this.userInfo.userDist = this.userInfo.userArea[0].value + this.userInfo.userArea[1].value + this.userInfo.userArea[2].value
     },
     methods: {
-      computeTotal () {
-        
+      computeTotal (num) {
+        this.goodsNum = num
       }
     }
   }

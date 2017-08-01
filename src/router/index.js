@@ -12,9 +12,6 @@ import EGoods from '@/views/goods/eGoods'
 import CGoods from '@/views/goods/codeGoods'
 import Order from '@/views/goods/orderDetail'
 import SureOrder from '@/views/goods/sureOrder'
-import SureMatter from '@/views/goods/sureMatter'
-import SureCode from '@/views/goods/sureCode'
-import SureE from '@/views/goods/sureEgoods'
 import Address from '@/views/goods/address'
 import OrderDeal from '@/views/goods/orderSuccess'
 import MOrder from '@/views/goods/matterOrder'
@@ -76,24 +73,7 @@ export default new Router({
       children: [
         {
           path: 'sureorder',
-          component: SureOrder,
-          children: [
-            {
-              path: 'sureMatter',
-              name: 'matter',
-              component: SureMatter
-            },
-            {
-              path: 'sureCode',
-              name: 'code',
-              component: SureCode
-            },
-            {
-              path: 'sureE',
-              name: 'egoods',
-              component: SureE
-            }
-          ]
+          component: SureOrder
         },
         {
           path: 'OrderDeal',

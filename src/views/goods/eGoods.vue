@@ -34,7 +34,7 @@
 
     <div class="sticky-footer">
       <!--状态二选一-->
-      <router-link to="/order/sureorder/sureCode" class="btn can-get">立即兑换</router-link>
+      <router-link to="/order/sureorder?type=egoods" class="btn can-get">立即兑换</router-link>
     </div>
   </div>
 </template>

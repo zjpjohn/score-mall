@@ -1,7 +1,7 @@
 <template>
   <div class="numbox">
     <button class="btn-minimum" type="button" @click="mini" :disabled="value==1">-</button>
-    <input class="input-num" type="number" v-model="value"/>
+    <input class="input-num" type="number" v-model="value" />
     <button class="btn-add" type="button" @click="add" :disabled="value == 10">+</button>
   </div>
 </template>
@@ -10,16 +10,18 @@
       name: 'numBox',
       data () {
         return {
-          value: 1
+          value: this.num
         }
       },
       methods: {
         add () {
           this.value += 1
+          this.$emit('changeNum', this.value)
         },
         mini () {
           if (this.value > 1) {
             this.value -= 1
+            this.$emit('changeNum', this.value)
           } else {
             return false
           }
@@ -30,9 +32,6 @@
           type: Number,
           default: 1
         }
-      },
-      created () {
-        this.value = this.num
       }
     }
 </script>
