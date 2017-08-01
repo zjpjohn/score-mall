@@ -10,6 +10,12 @@ Vue.prototype.$mui = mui
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
+Vue.filter('tel-formater', function (value) {
+  var reg = /^(\d{3})(\d{4})(\d{4})$/
+  var matches = reg.exec(value)
+  return matches[1] + ' ' + matches[2] + ' ' + matches[3]
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

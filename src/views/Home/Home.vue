@@ -143,7 +143,7 @@
         interval: 4000
       })
       setTimeout(function () {
-        _this.remindModal = true
+        _this.remindModal = false // 签到提醒
       }, 2000)
     }
   }
