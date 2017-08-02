@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper sure-order">
     <SureE v-if="orderType ==='egoods'" :score="score" @checkTel = "validBtn" @totalPrice = "totalPrice"></SureE>
-    <SureCode v-if="orderType== 'codeGoods'" :score="score" @totalPrice = "totalPrice"></SureCode>
+    <SureCode v-if="orderType== 'code'" :score="score" @totalPrice = "totalPrice"></SureCode>
     <SureMatter v-if="orderType== 'matter'" :score="score" @totalPrice = "totalPrice"></SureMatter>
 
     <div class="sticky-footer">
@@ -58,6 +58,11 @@
       SureMatter,
       SureCode,
       SureE
+    },
+    mounted () {
+      if (this.orderType === 'matter' || this.orderType === 'code') {
+        this.valid = true
+      }
     }
   }
 </script>

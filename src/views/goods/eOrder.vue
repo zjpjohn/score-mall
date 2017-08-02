@@ -45,7 +45,7 @@
       }
     }
     .e-info{
-
+      background: #fff;
       h4{
         font-size: 0.3rem;
         font-weight: normal;

@@ -71,7 +71,7 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
     .signIn-Box{
       position: fixed;
-      top:0;
+      top:0.9rem;
       left:0;
       right:0;
       padding-bottom: 0;

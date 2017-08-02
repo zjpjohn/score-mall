@@ -70,13 +70,13 @@
     }
     .goods-name{
       background: #fff;
-      box-shadow: 0 4px 6px 0 rgba(0,0,0,0.05);
+      box-shadow: 0 -4px 6px 0 rgba(0,0,0,0.05);
       margin-bottom: 0.2rem;
       padding:0.3rem;
       h4{
         font-size: 0.34rem;
         color: #333333;
-        margin-bottom: 0.12rem;
+        margin-bottom: 0.2rem;
         font-weight: normal;
       }
       p{
@@ -122,6 +122,7 @@
         }
         .detail-step{
           h5{
+            margin-top: 0.1rem;
             font-size: 0.26rem;
             color: #333333;
             font-weight: bold;

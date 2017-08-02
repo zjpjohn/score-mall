@@ -4,7 +4,10 @@
       <div class="img-wrapper">
         <img src="static/img/123@2x.png" alt="">
       </div>
-      <h3><strong>700</strong>积分</h3>
+      <h3>
+        <div class="goods-name">7天优酷黄金会员</div>
+        <div class="goods-value"><strong>700</strong>积分</div>
+      </h3>
     </div>
     <div class="order-form">
       <form action="##" class="order">
@@ -73,6 +76,10 @@
         color: #EB0247;
         font-weight: normal;
         margin-left: 0.2rem;
+        .goods-name{
+          color: #333;
+          margin-bottom: 0.2rem;
+        }
         strong{
           font-size: 0.4rem;
           color: #EB0247;

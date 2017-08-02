@@ -4,7 +4,10 @@
       <div class="img-wrapper">
         <img src="static/img/50M.png" alt="">
       </div>
-      <h3><strong>{{value}}</strong>积分</h3>
+      <h3>
+        <div class="goods-name">50M元流量劵</div>
+        <div class="goods-value"><strong>{{value}}</strong>积分</div>
+      </h3>
     </div>
     <div class="order-form">
       <form action="##" class="order">
@@ -34,13 +37,14 @@
 </template>
 <script type="text/ecmascript-6">
   import NumBox from '@/components/Numbox'
+  import Vue from 'vue'
   export default {
     name: 'hello',
     data () {
       return {
         value: this.score,
         goodsNum: 1,
-        tel: ''
+        tel: undefined
       }
     },
     components: {
@@ -64,10 +68,12 @@
         this.goodsNum = num
       },
       checkPhone () {
+        var telFormate = Vue.filter('tel-formater')
         this.tel = this.tel.replace(/\D/, '')
         var reg = /^1(3|4|5|7|8)\d{9}$/
         if (reg.test(this.tel)) {
           this.$emit('checkTel', true)
+          this.tel = telFormate(this.tel)
         }
       }
     }
@@ -102,14 +108,22 @@
       }
       h3{
         font-size: 0.26rem;
-        color: #EB0247;
         font-weight: normal;
         margin-left: 0.2rem;
-        strong{
-          font-size: 0.4rem;
-          color: #EB0247;
-          margin-right: 0.1rem;
+        .goods-name{
+          color: #333;
+          font-size: 0.3rem;
+          margin-bottom: 0.16rem;
         }
+        .goods-value{
+          color: #EB0247;
+          strong{
+            color: #EB0247;
+            font-size: 0.4rem;
+            margin-right: 0.1rem;
+          }
+        }
+
       }
     }
     .order-form{

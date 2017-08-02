@@ -5,7 +5,7 @@
         <img src="static/img/123@2x.png" alt="">
       </div>
       <div class="order-code-info">
-        <h4>20M元流量劵</h4>
+        <h4>7天优酷黄金会员</h4>
         <p>单价：<span>500积分</span></p>
         <p>数量：<span>2</span></p>
         <p>总价：<span class="text-blue">1000积分</span></p>
@@ -44,6 +44,9 @@
       display:flex;
       justify-content: flex-start;
       align-items: flex-start;
+      background: #fff;
+      border-top: 1px solid  #D4D4D4;
+      border-bottom: 1px solid  #D4D4D4;
       .img-wrapper{
         margin-right: 0.14rem;
         width:1.2rem;
@@ -58,6 +61,7 @@
         }
       }
       .order-code-info{
+        background: #fff;
         line-height: 0.34rem;
         h4{
           font-size:0.3rem;
@@ -100,7 +104,6 @@
           justify-content:space-between;
           align-items:center;
           padding-right: 0.3rem;
-
           &+li{
             border-top: 1px solid #D4D4D4;
           }

@@ -78,13 +78,16 @@
     },
     mounted () {
       var _this = this
+      var userAdd
       // 取信息
-      const userAdd = JSON.parse(localStorage.userAdd)
-      this.userName = userAdd.userName
-      this.userContact = userAdd.userContact
-      this.userAddress = userAdd.userAddress
-      this.userArea = userAdd.userArea
-      this.userDist = userAdd.userArea[0].value + ' ' + userAdd.userArea[1].value + ' ' + userAdd.userArea[2].value
+      if (localStorage.userAdd !== undefined) {
+        userAdd = JSON.parse(localStorage.userAdd)
+        this.userName = userAdd.userName
+        this.userContact = userAdd.userContact
+        this.userAddress = userAdd.userAddress
+        this.userArea = userAdd.userArea
+        this.userDist = userAdd.userArea[0].value + ' ' + userAdd.userArea[1].value + ' ' + userAdd.userArea[2].value
+      }
       // 地区选择
       var mobileSelect = new MobileSelect({
         trigger: '#chooseArea',

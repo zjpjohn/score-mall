@@ -76,7 +76,7 @@
       <div class="score-exchange">
         <h3><span>积分兑物</span> <router-link to="/exchange">MORE</router-link></h3>
         <GoodsLists></GoodsLists>
-        <div class="exchange-footer" onclick="loadMore()"><a href="javascript:void(0)" class="text-blue">查看更多兑换物品</a></div>
+        <div class="exchange-footer" @click="loadMore"><a href="javascript:void(0)" class="text-blue">查看更多兑换物品</a></div>
       </div>
 
     </div>
@@ -101,7 +101,8 @@
     <SignBlock  :sign-show="sign" @slideBox="slideSign" :sign-loaded="signLoad"></SignBlock>
     <!--签到成功弹窗-->
     <SignSuccess v-if="signSuccess" ></SignSuccess>
-
+    <!--加载等待-->
+    <Loading v-if="loading"></Loading>
   </div>
 
 
@@ -111,6 +112,7 @@
   import SignBlock from './SignBlock.vue'
   import SignSuccess from './SignSuccess.vue'
   import NavHeader from '@/components/NavHeader.vue'
+  import Loading from '@/components/Loading'
   export default {
     data () {
       return {
@@ -118,14 +120,16 @@
         sign: false,
         signSuccess: false,
         signLoad: 'none',
-        remindModal: false
+        remindModal: false,
+        loading: false
       }
     },
     components: {
       GoodsLists,
       SignBlock,
       NavHeader,
-      SignSuccess
+      SignSuccess,
+      Loading
     },
     methods: {
       slideSign () {
@@ -135,6 +139,13 @@
       },
       closeRemindModal () {
         this.remindModal = false
+      },
+      loadMore () {
+        this.loading = true
+        var _this = this
+        setTimeout(function () {
+          _this.loading = false
+        }, 3000)
       }
     },
     mounted () {

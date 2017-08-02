@@ -17,6 +17,7 @@ import OrderDeal from '@/views/goods/orderSuccess'
 import MOrder from '@/views/goods/matterOrder'
 import EOrder from '@/views/goods/eOrder'
 import COrder from '@/views/goods/codeOrderDetail'
+import LoseInternet from '@/views/loseInternet'
 
 Vue.use(Router)
 
@@ -31,6 +32,10 @@ export default new Router({
       path: '*',
       name: 'notFound',
       component: Empty
+    },
+    {
+      path: '/loseInternet',
+      component: LoseInternet
     },
     {
       path: '/hello',

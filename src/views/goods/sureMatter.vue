@@ -68,8 +68,12 @@
       NumBox
     },
     created () {
-      this.userInfo = JSON.parse(localStorage.userAdd)
-      this.userInfo.userDist = this.userInfo.userArea[0].value + this.userInfo.userArea[1].value + this.userInfo.userArea[2].value
+      if (localStorage.userAdd === undefined) {
+        return false
+      } else {
+        this.userInfo = JSON.parse(localStorage.userAdd)
+        this.userInfo.userDist = this.userInfo.userArea[0].value + this.userInfo.userArea[1].value + this.userInfo.userArea[2].value
+      }
     },
     methods: {
       computeTotal (num) {
